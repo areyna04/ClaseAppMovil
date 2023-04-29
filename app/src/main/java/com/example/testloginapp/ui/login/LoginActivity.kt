@@ -1,6 +1,7 @@
 package com.example.testloginapp.ui.login
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -10,12 +11,13 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.testloginapp.databinding.ActivityLoginBinding
 
 import com.example.testloginapp.R
-
+import com.example.testloginapp.ui.main.activity_main
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
@@ -72,6 +74,17 @@ class LoginActivity : AppCompatActivity() {
             )
         }
 
+        val button = findViewById<Button>(R.id.BtnColeccionista)
+        button.setOnClickListener {
+            val intent = Intent(this, activity_main::class.java)
+            startActivity(intent)
+        }
+
+        val buttonU = findViewById<Button>(R.id.BtnUsuario)
+        buttonU.setOnClickListener {
+            val intent = Intent(this, activity_main::class.java)
+            startActivity(intent)
+        }
         /* password.apply {
             afterTextChanged {
                 loginViewModel.loginDataChanged(

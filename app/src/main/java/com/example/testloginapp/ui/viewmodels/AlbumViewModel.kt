@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.testloginapp.data.model.Album
 import com.example.testloginapp.network.NetworkServiceAdapter
 
-
 class AlbumViewModel(application: Application) :  AndroidViewModel(application) {
 
     private val _albums = MutableLiveData<List<Album>>()

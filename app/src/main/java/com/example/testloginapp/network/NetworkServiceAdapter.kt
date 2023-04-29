@@ -12,6 +12,8 @@ import com.android.volley.toolbox.Volley
 import org.json.JSONArray
 import org.json.JSONObject
 import com.example.testloginapp.data.model.Album
+import com.example.testloginapp.data.model.Tracks
+
 class NetworkServiceAdapter constructor(context: Context) {
 
     companion object{
@@ -48,6 +50,22 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
+    fun getTracks( idAlbum :Int,  onComplete:(resp:List<Tracks>)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("albums/$idAlbum/tracks",
+            { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Tracks>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(Tracks(trackId = item.getInt("id"),name = item.getString("name"), duration = item.getString("duration")))
+                }
+                onComplete(list)
+            },
+            {
+                onError(it)
+            }))
+    }
+
 
     fun postAlbum(body: JSONObject,   onComplete:(resp:JSONObject)->Unit , onError: (error:VolleyError)->Unit){
         requestQueue.add(postRequest("albums",
@@ -60,7 +78,7 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    fun postTrackAlbumes(body: JSONObject,   onComplete:(resp:JSONObject)->Unit , onError: (error:VolleyError)->Unit){
+    fun postTrackAlbumes(body: JSONObject,  albumId :Int ,   onComplete:(resp:JSONObject)->Unit , onError: (error:VolleyError)->Unit){
         requestQueue.add(postRequest("albums/$albumId/tracks",
             body,
             { response ->

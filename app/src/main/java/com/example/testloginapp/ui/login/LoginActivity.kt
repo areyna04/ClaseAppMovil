@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val username = binding.username
-        val password = binding.password
+        //val password = binding.password
         val login = binding.login
         val loading = binding.loading
 
@@ -39,14 +39,14 @@ class LoginActivity : AppCompatActivity() {
             val loginState = it ?: return@Observer
 
             // disable login button unless both username / password is valid
-            login.isEnabled = loginState.isDataValid
+            login!!.isEnabled = loginState.isDataValid
 
             if (loginState.usernameError != null) {
-                username.error = getString(loginState.usernameError)
+                username!!.error = getString(loginState.usernameError)
             }
-            if (loginState.passwordError != null) {
+           /* if (loginState.passwordError != null) {
                 password.error = getString(loginState.passwordError)
-            }
+            }*/
         })
 
         loginViewModel.loginResult.observe(this@LoginActivity, Observer {
@@ -65,14 +65,14 @@ class LoginActivity : AppCompatActivity() {
             finish()
         })
 
-        username.afterTextChanged {
+        username?.afterTextChanged {
             loginViewModel.loginDataChanged(
-                username.text.toString(),
-                password.text.toString()
+                username.text.toString()
+                //password.text.toString()
             )
         }
 
-        password.apply {
+        /* password.apply {
             afterTextChanged {
                 loginViewModel.loginDataChanged(
                     username.text.toString(),
@@ -95,7 +95,7 @@ class LoginActivity : AppCompatActivity() {
                 loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
-        }
+        } */
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {

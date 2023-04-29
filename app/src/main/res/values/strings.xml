@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TestLoginApp</string>
+    <string name="app_name">ViniloApp</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -8,5 +8,12 @@
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="login_failed">"Login failed"</string>}
+    <string name="album_name">"Nombre del album"</string>
+    <string name="album_description">"Descripción del album"</string>
+    <string name="coleccionista">"Coleccionista"</string>
+    <string name="usuario">"Usuario"</string>
+    <string name="username">"Nombre de usuario"</string>
+    <string name="hello_album_fragment">Sección de Albums</string>
+    <string name="action_ingresar">"Ingresar"</string>
 </resources>

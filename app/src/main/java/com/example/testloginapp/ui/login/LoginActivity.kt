@@ -1,6 +1,7 @@
 package com.example.testloginapp.ui.login
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -10,12 +11,13 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.testloginapp.databinding.ActivityLoginBinding
 
 import com.example.testloginapp.R
-
+import com.example.testloginapp.ui.main.activity_main
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
@@ -28,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val username = binding.username
-        val password = binding.password
+        //val password = binding.password
         val login = binding.login
         val loading = binding.loading
 
@@ -39,14 +41,14 @@ class LoginActivity : AppCompatActivity() {
             val loginState = it ?: return@Observer
 
             // disable login button unless both username / password is valid
-            login.isEnabled = loginState.isDataValid
+            login!!.isEnabled = loginState.isDataValid
 
             if (loginState.usernameError != null) {
-                username.error = getString(loginState.usernameError)
+                username!!.error = getString(loginState.usernameError)
             }
-            if (loginState.passwordError != null) {
+           /* if (loginState.passwordError != null) {
                 password.error = getString(loginState.passwordError)
-            }
+            }*/
         })
 
         loginViewModel.loginResult.observe(this@LoginActivity, Observer {
@@ -65,14 +67,25 @@ class LoginActivity : AppCompatActivity() {
             finish()
         })
 
-        username.afterTextChanged {
+        username?.afterTextChanged {
             loginViewModel.loginDataChanged(
-                username.text.toString(),
-                password.text.toString()
+                username.text.toString()
+                //password.text.toString()
             )
         }
 
-        password.apply {
+        val button = findViewById<Button>(R.id.BtnColeccionista)
+        button.setOnClickListener {
+            val intent = Intent(this, activity_main::class.java)
+            startActivity(intent)
+        }
+
+        val buttonU = findViewById<Button>(R.id.BtnUsuario)
+        buttonU.setOnClickListener {
+            val intent = Intent(this, activity_main::class.java)
+            startActivity(intent)
+        }
+        /* password.apply {
             afterTextChanged {
                 loginViewModel.loginDataChanged(
                     username.text.toString(),
@@ -95,7 +108,7 @@ class LoginActivity : AppCompatActivity() {
                 loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
-        }
+        } */
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {

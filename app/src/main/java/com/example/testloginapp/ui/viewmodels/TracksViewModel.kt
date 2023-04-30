@@ -6,16 +6,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.testloginapp.data.model.Tracks
 import com.example.testloginapp.data.model.Album
 import com.example.testloginapp.network.NetworkServiceAdapter
 
+class TracksViewModel(application: Application, albumId: Int) :  AndroidViewModel(application) {
 
-class AlbumViewModel(application: Application) :  AndroidViewModel(application) {
+    private val _tracks  = MutableLiveData<List<Tracks>>()
 
-    private val _albums = MutableLiveData<List<Album>>()
-
-    val albums: LiveData<List<Album>>
-        get() = _albums
+    val albums: LiveData<List<Tracks>>
+        get() = _tracks
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -27,13 +27,18 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
+    val id:Int = albumId
     init {
         refreshDataFromNetwork()
     }
 
+
+
+
+
     private fun refreshDataFromNetwork() {
-        NetworkServiceAdapter.getInstance(getApplication()).getAlbums({
-            _albums.postValue(it)
+        NetworkServiceAdapter.getInstance(getApplication()).getTracks( id ,{
+            _tracks.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         },{

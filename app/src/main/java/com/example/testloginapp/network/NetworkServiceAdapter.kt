@@ -13,13 +13,15 @@ import org.json.JSONArray
 import org.json.JSONObject
 import com.example.testloginapp.data.model.Album
 import com.example.testloginapp.data.model.Tracks
+import com.example.testloginapp.data.model.Track
 import com.example.testloginapp.data.model.Collector
 import com.example.testloginapp.data.model.Comment
 
 class NetworkServiceAdapter constructor(context: Context) {
 
     companion object{
-        const val BASE_URL= "http://52.90.82.141:3000/"
+        //const val BASE_URL= "http://52.90.82.141:3000/"
+        const val BASE_URL= "http://localhost:3000/"
         var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
@@ -52,14 +54,14 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    fun getTracks( idAlbum :Int,  onComplete:(resp:List<Tracks>)->Unit, onError: (error:VolleyError)->Unit){
-        requestQueue.add(getRequest("albums/$idAlbum/tracks",
+    fun getTracks( albumId :Int,  onComplete:(resp:List<Track>)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("albums/$albumId/tracks",
             { response ->
                 val resp = JSONArray(response)
-                val list = mutableListOf<Tracks>()
+                val list = mutableListOf<Track>()
                 for (i in 0 until resp.length()) {
                     val item = resp.getJSONObject(i)
-                    list.add(Tracks(trackId = item.getInt("id"),name = item.getString("name"), duration = item.getString("duration")))
+                    list.add(i,Track(albumId=albumId,name = item.getString("name"), duration = item.getString("duration")))
                 }
                 onComplete(list)
             },
@@ -80,7 +82,7 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
-    fun postTrackAlbumes(body: JSONObject,  albumId :Int ,   onComplete:(resp:JSONObject)->Unit , onError: (error:VolleyError)->Unit){
+    fun postTrackAlbum(body: JSONObject,  albumId :Int ,   onComplete:(resp:JSONObject)->Unit , onError: (error:VolleyError)->Unit){
         requestQueue.add(postRequest("albums/$albumId/tracks",
             body,
             { response ->

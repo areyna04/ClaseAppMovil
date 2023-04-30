@@ -20,8 +20,8 @@ import com.example.testloginapp.data.model.Comment
 class NetworkServiceAdapter constructor(context: Context) {
 
     companion object{
-        //const val BASE_URL= "http://52.90.82.141:3000/"
-        const val BASE_URL= "http://localhost:3000/"
+        const val BASE_URL= "http://52.90.82.141:3000/"
+        //const val BASE_URL= "http://localhost:3000/"
         var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {

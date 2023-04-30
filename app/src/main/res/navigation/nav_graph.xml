@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/collectorFragment"
         android:name="com.example.testloginapp.ui.CollectorFragment"
-        android:label="collector_fragment"
+        android:label="Coleccionista"
         tools:layout="@layout/collector_fragment" >
         <action
             android:id="@+id/action_collectorFragment_to_albumFragment"
@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/albumFragment"
         android:name="com.example.testloginapp.ui.AlbumFragment"
-        android:label="album_fragment"
+        android:label="Albums"
         tools:layout="@layout/album_fragment" >
         <action
             android:id="@+id/action_albumFragment_to_commentFragment"
@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/commentFragment"
         android:name="com.example.testloginapp.ui.CommentFragment"
-        android:label="comment_fragment"
+        android:label="Comentarios"
         tools:layout="@layout/comment_fragment" >
         <argument
             android:name="albumId"

@@ -16,4 +16,6 @@
     <string name="username">"Nombre de usuario"</string>
     <string name="hello_album_fragment">Sección de Albums</string>
     <string name="action_ingresar">"Ingresar"</string>
+    <string name="title_albums">Albums</string>
+    <string name="action_settings">Albumes</string>
 </resources>

@@ -12,7 +12,10 @@ You can download the APK for Android at this link: [apk app vinilos](https://uni
 
 This app is functional from Android API 30.
 
-# ClaseAppWeb
+### Backend
+
+Ehe backend of the app is hosted on an AWS instance and is available at http://52.90.82.141:3000/
+____________________________________________________________________________________________________________________________
 
 ## Vinilos
 
@@ -25,3 +28,7 @@ Puedes descargar el APK para Android en este enlace: [apk app vinilos](https://u
 ### Compatibilidad
 
 Esta aplicación es funcional desde la API 30 de Android.
+
+### Backend
+
+El backend de la app esta alojado en una instancia de AWS y esta disponible en http://52.90.82.141:3000/

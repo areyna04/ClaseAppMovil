@@ -9,6 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.testloginapp.R
 import com.example.testloginapp.databinding.AlbumItemBinding
 import com.example.testloginapp.data.model.Album
+
+import android.view.View
+import android.widget.ImageView
+import com.squareup.picasso.Picasso
 //import com.example.testloginapp.ui.AlbumFragmentDirections
 
 class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
@@ -32,6 +36,13 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
         holder.viewDataBinding.also {
             it.album = albums[position]
         }
+
+        val imageView = holder.viewDataBinding.root.findViewById<ImageView>(R.id.imageView)
+        val imageUrl = albums[position].cover
+        Picasso.get()
+            .load(imageUrl)
+            .into(imageView)
+
         holder.viewDataBinding.root.setOnClickListener {
             //val action = AlbumFragmentDirections.actionAlbumFragmentToCommentFragment(albums[position].albumId)
             // Navigate using that action
@@ -52,5 +63,16 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
         }
     }
 
+    fun getView(position: Int, convertView: View?, parent: ViewGroup?) {
 
+        val imageView = convertView?.findViewById<ImageView>(R.id.imageView)
+        val imageUrl = getItem(position).cover
+        Picasso.get()
+            .load(imageUrl)
+            .into(imageView)
+    }
+
+    fun getItem(position: Int): Album {
+        return albums[position]
+    }
 }

@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testloginapp.R
-import com.example.testloginapp.databinding.AlbumFragmentBinding
 import com.example.testloginapp.data.model.Album
+import com.example.testloginapp.databinding.AlbumFragmentBinding
 import com.example.testloginapp.ui.adapters.AlbumsAdapter
 import com.example.testloginapp.viewmodels.AlbumViewModel
 
@@ -69,4 +69,5 @@ class AlbumFragment : Fragment() {
             viewModel.onNetworkErrorShown()
         }
     }
+
 }

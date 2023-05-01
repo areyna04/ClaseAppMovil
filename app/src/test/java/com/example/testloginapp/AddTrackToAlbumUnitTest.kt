@@ -17,16 +17,15 @@ import org.junit.Assert.assertEquals
 
 class AddTrackToAlbumUnitTest {
     @Test
-    fun getAlbumsIsAccesible() {
+    fun addTrackNonExistingIsNotPossible() {
         val client = OkHttpClient()
 
         val request = Request.Builder()
-            .url("http://52.90.82.141:3000/albums")
+            .url("http://52.90.82.141:3000/album/1/tracks")
             .build()
 
         val response: Response = client.newCall(request).execute()
 
-        assertEquals(200, response.code())
-        assertEquals("OK", response.message())
+        assertEquals(404, response.code())
     }
 }

@@ -15,7 +15,7 @@ import okhttp3.Request
 import okhttp3.Response
 import org.junit.Assert.assertEquals
 
-class ListAlbumTest {
+class AddTrackToAlbumUnitTest {
     @Test
     fun getAlbumsIsAccesible() {
         val client = OkHttpClient()

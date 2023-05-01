@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/albumFragment">
+    <fragment
+        android:id="@+id/collectorFragment"
+        android:name="com.example.testloginapp.ui.CollectorFragment"
+        android:label="Coleccionista"
+        tools:layout="@layout/collector_fragment" >
+        <action
+            android:id="@+id/action_collectorFragment_to_albumFragment"
+            app:destination="@id/albumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumFragment"
+        android:name="com.example.testloginapp.ui.AlbumFragment"
+        android:label="Albums"
+        tools:layout="@layout/album_fragment" >
+        <action
+            android:id="@+id/action_albumFragment_to_commentFragment"
+            app:destination="@id/commentFragment" />
+        <action
+            android:id="@+id/action_albumFragment_to_addalbumFragment"
+            app:destination="@id/addalbumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="com.example.testloginapp.ui.CommentFragment"
+        android:label="Comentarios"
+        tools:layout="@layout/comment_fragment" >
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/addalbumFragment"
+        android:name="com.example.testloginapp.ui.AddAlbumFragment"
+        android:label="Agregar Album"
+        tools:layout="@layout/fragment_add_album" >
+    </fragment>
+
+</navigation>

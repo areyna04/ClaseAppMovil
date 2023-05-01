@@ -1,4 +1,6 @@
 package com.example.testloginapp.data.model
 
-class Tracks {
-}
+data class Tracks (
+    val trackId :Int,
+    val name:String,
+    val duration :String )

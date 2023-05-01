@@ -7,9 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.testloginapp.data.model.Album
-import com.example.testloginapp.network.NetworkServiceAdapter
 import com.example.testloginapp.repositories.AlbumRepository
-import com.example.testloginapp.repositories.CollectorsRepository
+import org.json.JSONObject
 
 class AlbumViewModel(application: Application) :  AndroidViewModel(application) {
 
@@ -37,6 +36,17 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
     private fun refreshDataFromNetwork() {
         albumsRepository.refreshData({
             _albums.postValue(it)
+            _eventNetworkError.value = false
+            _isNetworkErrorShown.value = false
+        },{
+            _eventNetworkError.value = true
+        })
+    }
+
+    fun postDataFromNetwork(postData: JSONObject ) {
+        albumsRepository.postAlbum(
+            postData,
+            {
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         },{

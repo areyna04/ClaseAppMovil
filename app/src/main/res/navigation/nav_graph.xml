@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_albumFragment_to_commentFragment"
             app:destination="@id/commentFragment" />
+        <action
+            android:id="@+id/action_albumFragment_to_addalbumFragment"
+            app:destination="@id/addalbumFragment" />
     </fragment>
     <fragment
         android:id="@+id/commentFragment"
@@ -31,4 +34,11 @@
             android:name="albumId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/addalbumFragment"
+        android:name="com.example.testloginapp.ui.AddAlbumFragment"
+        android:label="Agregar Album"
+        tools:layout="@layout/fragment_add_album" >
+    </fragment>
+
 </navigation>

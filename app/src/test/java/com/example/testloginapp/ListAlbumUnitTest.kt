@@ -10,16 +10,23 @@ import com.example.testloginapp.network.NetworkServiceAdapter
 import com.android.volley.toolbox.*
 import org.json.JSONArray
 import org.mockito.Mockito.*
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
+import org.junit.Assert.assertEquals
 
 class ListAlbumTest {
     @Test
-    fun getAlbumsReturnsListOfAlbums() {
-        val mockApplication = mock(Application::class.java)
-        val albumRepository = AlbumRepository(mockApplication)
-        val emptyResult: Unit? = null
-        val mockCallback: (List<Album>) = emptyList<Album>()
-        val mockErrorCallback: (VolleyError) -> Unit = mock()
+    fun getAlbumsIsAccesible() {
+        val client = OkHttpClient()
 
-        albumRepository.refreshData((mockCallback) -> Unit, mockErrorCallback)
+        val request = Request.Builder()
+            .url("http://52.90.82.141:3000/albums")
+            .build()
+
+        val response: Response = client.newCall(request).execute()
+
+        assertEquals(200, response.code())
+        assertEquals("OK", response.message())
     }
 }

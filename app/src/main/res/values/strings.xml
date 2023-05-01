@@ -36,4 +36,13 @@
     <string name="txt_no_comments">No hay comentarios para este álbum</string>
     <string name="title_collectors">Coleccionistas</string>
     <string name="title_comments">Comentarios del álbum</string>
+
+    <string name="nameAlbum">Nombre del álbum</string>
+    <string name="cover">Url cubierta álbum</string>
+    <string name="releaseDate">Fecha de lanzamiento</string>
+    <string name="description">Descripción</string>
+    <string name="genre">Genero</string>
+    <string name="recordLabel">Record Label</string>
+    <string name="submit">Guardar</string>
+    <string name="crear_album">Agregar Album</string>
 </resources>

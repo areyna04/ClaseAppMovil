@@ -62,17 +62,4 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
             val LAYOUT = R.layout.album_item
         }
     }
-
-    fun getView(position: Int, convertView: View?, parent: ViewGroup?) {
-
-        val imageView = convertView?.findViewById<ImageView>(R.id.imageView)
-        val imageUrl = getItem(position).cover
-        Picasso.get()
-            .load(imageUrl)
-            .into(imageView)
-    }
-
-    fun getItem(position: Int): Album {
-        return albums[position]
-    }
 }

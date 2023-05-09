@@ -21,7 +21,6 @@ class NetworkServiceAdapter constructor(context: Context) {
 
     companion object{
         const val BASE_URL= "http://52.90.82.141:3000/"
-        //const val BASE_URL= "http://localhost:3000/"
         var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
@@ -35,8 +34,6 @@ class NetworkServiceAdapter constructor(context: Context) {
         // applicationContext keeps you from leaking the Activity or BroadcastReceiver if someone passes one in.
         Volley.newRequestQueue(context.applicationContext)
     }
-
-
 
     fun getAlbums(onComplete:(resp:List<Album>)->Unit, onError: (error:VolleyError)->Unit){
         requestQueue.add(getRequest("albums",

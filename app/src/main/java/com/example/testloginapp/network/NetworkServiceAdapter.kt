@@ -135,6 +135,26 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
+    fun getAlbum(albumId:Int, onComplete:(resp:Album)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("albums/$albumId",
+            Response.Listener<String> { response ->
+                val resp = JSONObject(response)
+                val album = Album(
+                    albumId = resp.getInt("id"),
+                    name = resp.getString("name"),
+                    cover = resp.getString("cover"),
+                    recordLabel = resp.getString("recordLabel"),
+                    releaseDate = resp.getString("releaseDate"),
+                    genre = resp.getString("genre"),
+                    description = resp.getString("description")
+                )
+                onComplete(album)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }

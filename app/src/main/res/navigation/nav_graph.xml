@@ -19,11 +19,11 @@
         android:label="Albums"
         tools:layout="@layout/album_fragment" >
         <action
-            android:id="@+id/action_albumFragment_to_commentFragment"
-            app:destination="@id/commentFragment" />
-        <action
             android:id="@+id/action_albumFragment_to_addalbumFragment"
             app:destination="@id/addalbumFragment" />
+        <action
+            android:id="@+id/action_albumFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/commentFragment"
@@ -39,6 +39,18 @@
         android:name="com.example.testloginapp.ui.AddAlbumFragment"
         android:label="Agregar Album"
         tools:layout="@layout/fragment_add_album" >
+    </fragment>
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="com.example.testloginapp.ui.AlbumDetailFragment"
+        android:label="Detalle de Album"
+        tools:layout="@layout/comment_fragment" >
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_albumDetailFragment_to_commentFragment"
+            app:destination="@id/commentFragment" />
     </fragment>
 
 </navigation>

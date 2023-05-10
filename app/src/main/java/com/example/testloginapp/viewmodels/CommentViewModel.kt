@@ -7,6 +7,7 @@ import com.example.testloginapp.data.model.Comment
 import com.example.testloginapp.network.NetworkServiceAdapter
 import com.example.testloginapp.repositories.CollectorsRepository
 import com.example.testloginapp.repositories.CommentsRepository
+import org.json.JSONObject
 
 class CommentViewModel(application: Application, albumId: Int) :  AndroidViewModel(application) {
 
@@ -42,6 +43,17 @@ class CommentViewModel(application: Application, albumId: Int) :  AndroidViewMod
             Log.d("Error", it.toString())
             _eventNetworkError.value = true
         })
+    }
+
+    fun postDataFromNetwork(postData: JSONObject, albumId: Int) {
+        commentsRepository.postComment(
+            postData, albumId,
+            {
+                _eventNetworkError.value = false
+                _isNetworkErrorShown.value = false
+            },{
+                _eventNetworkError.value = true
+            })
     }
 
     fun onNetworkErrorShown() {

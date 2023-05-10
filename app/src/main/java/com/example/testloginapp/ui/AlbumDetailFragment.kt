@@ -6,13 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.testloginapp.R
 import com.example.testloginapp.data.model.Album
 import com.example.testloginapp.viewmodels.AlbumDetailViewModel
 import com.example.testloginapp.databinding.FragmentAlbumDetailBinding
-
+import androidx.navigation.fragment.findNavController
 import android.widget.ImageView
 import androidx.lifecycle.Observer
 import com.squareup.picasso.Picasso
@@ -47,5 +48,14 @@ class AlbumDetailFragment : Fragment() {
                 .load(imageUrl)
                 .into(imageView)
         })
+
+        val botonCometarios = requireView().findViewById<Button>(R.id.botonCometarios)
+        botonCometarios.setOnClickListener {
+            // Handle the button click and navigate to the ComentariosFragment
+            val albumId = args.albumId
+            viewModel.refreshDataFromNetwork(albumId)
+            val action = AlbumDetailFragmentDirections.actionAlbumDetailFragmentToCommentFragment(albumId)
+            findNavController().navigate(action)
+        }
     }
 }

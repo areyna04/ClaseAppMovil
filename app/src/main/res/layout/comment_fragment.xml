@@ -21,6 +21,30 @@
         android:layout_height="wrap_content"
         tools:listitem="@layout/comment_item">
 
+
     </androidx.recyclerview.widget.RecyclerView>
+
+    <EditText
+        android:id="@+id/comentario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Comentario" />
+
+    <EditText
+        android:id="@+id/rating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Rating" />
+
+    <Button
+        android:id="@+id/botonAgregarComentario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:text="Agregar Comentario"
+        android:onClick="onAgregarComentario"/>
 
 </LinearLayout>

@@ -51,7 +51,7 @@ class CommentFragment : Fragment() {
             "You can only access the viewModel after onActivityCreated()"
         }
         activity.actionBar?.title = getString(R.string.title_comments)
-       /* val args: CommentFragmentArgs by this.navArgs()
+        val args: CommentFragmentArgs by this.navArgs()
         Log.d("Args", args.albumId.toString())
         viewModel = ViewModelProvider(this, CommentViewModel.Factory(activity.application, args.albumId)).get(CommentViewModel::class.java)
         viewModel.comments.observe(viewLifecycleOwner, Observer<List<Comment>> {
@@ -66,7 +66,7 @@ class CommentFragment : Fragment() {
         })
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
             if (isNetworkError) onNetworkError()
-        }) */
+        }) 
     }
     override fun onDestroyView() {
         super.onDestroyView()

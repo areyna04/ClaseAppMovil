@@ -4,6 +4,7 @@
             name="viewModel"
             type="com.example.testloginapp.viewmodels.AlbumDetailViewModel" />
     </data>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -90,13 +91,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|start"
             android:layout_margin="16dp"
-            android:text="Agregar track" />
+            android:text="Agregar track"
+            android:onClick="onAgregarTrackButtonClick" />
         <Button
             android:id="@+id/botonCometarios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:layout_margin="16dp"
-            android:text="Comentarios" />
+            android:text="Comentarios"
+            android:onClick="onComentariosButtonClick"/>
     </FrameLayout>
 </layout>

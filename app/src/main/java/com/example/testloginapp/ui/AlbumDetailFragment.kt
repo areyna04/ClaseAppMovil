@@ -63,7 +63,7 @@ class AlbumDetailFragment : Fragment() {
             // Handle the button click and navigate to the ComentariosFragment
             val albumId = args.albumId
             viewModel.refreshDataFromNetwork(albumId)
-            val action = AlbumDetailFragmentDirections.actionAlbumDetailFragmentToTrackFragment(albumId)
+            val action = AlbumDetailFragmentDirections.actionAlbumDetailFragmentToTrackFragmet(albumId)
             findNavController().navigate(action)
         }
     }

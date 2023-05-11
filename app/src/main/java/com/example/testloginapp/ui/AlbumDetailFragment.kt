@@ -57,5 +57,14 @@ class AlbumDetailFragment : Fragment() {
             val action = AlbumDetailFragmentDirections.actionAlbumDetailFragmentToCommentFragment(albumId)
             findNavController().navigate(action)
         }
+
+        val botonAgregarTrack = requireView().findViewById<Button>(R.id.botonAgregarTrack)
+        botonAgregarTrack.setOnClickListener {
+            // Handle the button click and navigate to the ComentariosFragment
+            val albumId = args.albumId
+            viewModel.refreshDataFromNetwork(albumId)
+            val action = AlbumDetailFragmentDirections.actionAlbumDetailFragmentToTrackFragment(albumId)
+            findNavController().navigate(action)
+        }
     }
 }

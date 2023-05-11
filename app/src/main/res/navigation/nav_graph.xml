@@ -51,6 +51,16 @@
         <action
             android:id="@+id/action_albumDetailFragment_to_commentFragment"
             app:destination="@id/commentFragment" />
+        <action
+            android:id="@+id/action_albumDetailFragment_to_addTrackFragment"
+            app:destination="@id/addTrackFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/addTrackFragment"
+        android:name="com.example.testloginapp.ui.AddTrackFragment"
+        android:label="AddTrackFragment" />
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
 
 </navigation>

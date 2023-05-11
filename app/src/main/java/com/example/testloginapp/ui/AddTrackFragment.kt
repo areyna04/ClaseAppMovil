@@ -26,7 +26,7 @@ import org.json.JSONObject
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class CommentFragment : Fragment() {
+class AddTrackFragment : Fragment() {
     private var _binding: CommentFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView

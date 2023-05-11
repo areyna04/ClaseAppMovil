@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.testloginapp.viewmodels.AlbumViewModel
 import org.json.JSONObject
+import android.util.Log
 
 class AddAlbumFragment : Fragment() {
 
@@ -37,9 +38,9 @@ class AddAlbumFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         nameEditText = view.findViewById(R.id.nameEditText)
         releaseDateEditText = view.findViewById(R.id.releaseDateEditText)
-        descriptionEditText = view.findViewById(R.id.releaseDateEditText)
-        genreEditText = view.findViewById(R.id.releaseDateEditText)
-        recordLabelEditText = view.findViewById(R.id.releaseDateEditText)
+        descriptionEditText = view.findViewById(R.id.descriptionEditText)
+        genreEditText = view.findViewById(R.id.genreEditText)
+        recordLabelEditText = view.findViewById(R.id.recordLabelEditText)
         coverEditText = view.findViewById(R.id.coverEditText)
         val submitButton = view.findViewById<Button>(R.id.submitButton)
         submitButton.setOnClickListener {
@@ -49,7 +50,6 @@ class AddAlbumFragment : Fragment() {
             val description = descriptionEditText.text.toString()
             val genre = genreEditText.text.toString()
             val recordLabel = recordLabelEditText.text.toString()
-
 
             val postParams = mapOf<String, Any>(
                 "name" to name,
@@ -61,6 +61,7 @@ class AddAlbumFragment : Fragment() {
             )
 
             viewModel.postDataFromNetwork(JSONObject(postParams))
+            Log.d("Tag", JSONObject(postParams).toString())
             findNavController().popBackStack()
         }
     }

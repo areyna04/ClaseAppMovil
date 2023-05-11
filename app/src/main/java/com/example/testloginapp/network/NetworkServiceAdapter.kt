@@ -58,6 +58,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 val list = mutableListOf<Track>()
                 for (i in 0 until resp.length()) {
                     val item = resp.getJSONObject(i)
+                    Log.d("Response", item.toString())
                     list.add(i,Track(albumId=albumId,name = item.getString("name"), duration = item.getString("duration")))
                 }
                 onComplete(list)

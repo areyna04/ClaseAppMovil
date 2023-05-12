@@ -44,26 +44,41 @@ class ConsultarCatalogoAlbumsTest {
     @Test
     fun consultarCatalogoAlbumsTest() {
         val materialButton = onView(
-allOf(withId(R.id.BtnUsuario), withText("Usuario"),
-childAtPosition(
-allOf(withId(R.id.container),
-childAtPosition(
-withId(android.R.id.content),
-0)),
-2),
-isDisplayed()))
+            allOf(
+                withId(R.id.BtnUsuario), withText("Usuario"),
+                childAtPosition(
+                    allOf(
+                        withId(R.id.container),
+                        childAtPosition(
+                            withId(android.R.id.content),
+                            0
+                        )
+                    ),
+                    2
+                ),
+                isDisplayed()
+            )
+        )
         materialButton.perform(click())
-        
+
         val textView = onView(
-allOf(withText("Albums"),
-withParent(allOf(withId(R.id.my_toolbar),
-withParent(IsInstanceOf.instanceOf(android.view.ViewGroup::class.java)))),
-isDisplayed()))
+            allOf(
+                withText("Albums"),
+                withParent(
+                    allOf(
+                        withId(R.id.my_toolbar),
+                        withParent(IsInstanceOf.instanceOf(android.view.ViewGroup::class.java))
+                    )
+                ),
+                isDisplayed()
+            )
+        )
         textView.check(matches(withText("Albums")))
-        }
-    
+    }
+
     private fun childAtPosition(
-            parentMatcher: Matcher<View>, position: Int): Matcher<View> {
+        parentMatcher: Matcher<View>, position: Int
+    ): Matcher<View> {
 
         return object : TypeSafeMatcher<View>() {
             override fun describeTo(description: Description) {
@@ -78,4 +93,4 @@ isDisplayed()))
             }
         }
     }
-    }
+}

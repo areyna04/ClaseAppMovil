@@ -26,6 +26,8 @@ $ npm run start:prod
 
 For support please contact the authors of the BackEnd repository
 
+Once repository is running please change the API host on the NetworkServiceAdaptor.kt file on this project.
+
 ### Compatibility
 
 This app is functional from Android API 30.

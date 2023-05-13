@@ -9,6 +9,7 @@
     tools:context=".ui.TrackFragment">
 
     <TextView
+        android:id="@+id/txt_no_tracks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/txt_no_tracks"

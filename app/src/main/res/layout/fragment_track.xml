@@ -6,45 +6,44 @@
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
     android:orientation="vertical"
-    tools:context=".ui.CommentFragment">
+    tools:context=".ui.TrackFragment">
 
     <TextView
-        android:id="@+id/txt_no_comments"
+        android:id="@+id/txt_no_tracks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/txt_no_comments"
+        android:text="@string/txt_no_tracks"
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/commentsRv"
+        android:id="@+id/tracksRv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/comment_item">
+        tools:listitem="@layout/track_item">
 
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <EditText
-        android:id="@+id/comentario"
+        android:id="@+id/edt_name_track"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Comentario" />
+        android:hint="@string/name" />
 
     <EditText
-        android:id="@+id/rating"
+        android:id="@+id/edt_dur_track"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Rating" />
+        android:hint="@string/duration" />
 
     <Button
-        android:id="@+id/botonAgregarComentario"
+        android:id="@+id/btnAgregarTrack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
-        android:text="Agregar Comentario"
-        />
+        android:text="Agregar Track" />
 
 </LinearLayout>

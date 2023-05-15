@@ -3,20 +3,18 @@ package com.example.testloginapp.viewmodels
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
-import com.example.testloginapp.data.model.Comment
-import com.example.testloginapp.network.NetworkServiceAdapter
-import com.example.testloginapp.repositories.CollectorsRepository
-import com.example.testloginapp.repositories.CommentsRepository
+import com.example.testloginapp.data.model.Track
+import com.example.testloginapp.repositories.TrackRepository
 import org.json.JSONObject
 
-class CommentViewModel(application: Application, albumId: Int) :  AndroidViewModel(application) {
+class TrackViewModel(application: Application, albumId: Int) :  AndroidViewModel(application) {
 
-    private val commentsRepository = CommentsRepository(application)
+    private val trackRepository = TrackRepository(application)
 
-    private val _comments = MutableLiveData<List<Comment>>()
+    private val _tracks = MutableLiveData<List<Track>>()
 
-    val comments: LiveData<List<Comment>>
-        get() = _comments
+    val tracks: LiveData<List<Track>>
+        get() = _tracks
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -35,8 +33,8 @@ class CommentViewModel(application: Application, albumId: Int) :  AndroidViewMod
     }
 
     private fun refreshDataFromNetwork() {
-        commentsRepository.refreshData(id, {
-            _comments.postValue(it)
+        trackRepository.refreshData(id, {
+            _tracks.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         },{
@@ -46,7 +44,7 @@ class CommentViewModel(application: Application, albumId: Int) :  AndroidViewMod
     }
 
     fun postDataFromNetwork(postData: JSONObject, albumId: Int) {
-        commentsRepository.postComment(
+        trackRepository.postTrackAlbum(
             postData, albumId,
             {
                 _eventNetworkError.value = false
@@ -62,11 +60,12 @@ class CommentViewModel(application: Application, albumId: Int) :  AndroidViewMod
 
     class Factory(val app: Application, val albumId: Int) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(CommentViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(TrackViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return CommentViewModel(app, albumId) as T
+                return TrackViewModel(app, albumId) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
     }
+
 }

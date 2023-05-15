@@ -92,6 +92,7 @@
             android:layout_gravity="bottom|start"
             android:layout_margin="16dp"
             android:text="Agregar track"
+            android:onClick="onAgregarTrackButtonClick"
             />
         <Button
             android:id="@+id/botonCometarios"

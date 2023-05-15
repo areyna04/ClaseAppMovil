@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="comment" type="com.example.testloginapp.data.model.Comment"/>
+        <variable name="track" type="com.example.testloginapp.data.model.Track"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,15 +26,15 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/tv_track_item1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{comment.rating}" />
+                    android:text="@{track.name}" />
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/tv_track_item2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{comment.description}" />
+                    android:text="@{track.duration}" />
 
             </LinearLayout>
 

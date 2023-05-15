@@ -13,7 +13,7 @@ import com.example.testloginapp.data.model.Album
 import android.view.View
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
-//import com.example.testloginapp.ui.AlbumFragmentDirections
+import com.example.testloginapp.ui.AlbumFragmentDirections
 
 class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
 
@@ -44,9 +44,8 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
             .into(imageView)
 
         holder.viewDataBinding.root.setOnClickListener {
-            //val action = AlbumFragmentDirections.actionAlbumFragmentToCommentFragment(albums[position].albumId)
-            // Navigate using that action
-            //holder.viewDataBinding.root.findNavController().navigate(action)
+            val action = AlbumFragmentDirections.actionAlbumFragmentToAlbumDetailFragment(albums[position].albumId)
+            holder.viewDataBinding.root.findNavController().navigate(action)
         }
     }
 

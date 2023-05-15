@@ -52,15 +52,26 @@
             android:id="@+id/action_albumDetailFragment_to_commentFragment"
             app:destination="@id/commentFragment" />
         <action
-            android:id="@+id/action_albumDetailFragment_to_addTrackFragment"
-            app:destination="@id/addTrackFragment" />
+            android:id="@+id/action_albumDetailFragment_to_trackFragmet"
+            app:destination="@id/trackFragment" />
     </fragment>
     <fragment
         android:id="@+id/addTrackFragment"
         android:name="com.example.testloginapp.ui.AddTrackFragment"
-        android:label="AddTrackFragment" />
+        android:label="AddTrackFragment" >
         <argument
             android:name="albumId"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/trackFragment"
+        android:name="com.example.testloginapp.ui.TrackFragment"
+        android:label="Agregar Track a un Album"
+        tools:layout="@layout/fragment_track">
+
+    <argument
+        android:name="albumId"
+        app:argType="integer" />
+    </fragment>
 
 </navigation>

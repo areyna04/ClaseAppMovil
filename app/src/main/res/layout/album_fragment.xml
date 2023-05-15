@@ -21,7 +21,6 @@
         android:src="@drawable/ic_album_add_24"
         android:contentDescription="@string/crear_album"
         android:layout_margin="16dp"
-        android:onClick="onMyButtonClick"
         />
 
     <androidx.recyclerview.widget.RecyclerView

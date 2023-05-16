@@ -19,7 +19,7 @@ import com.example.testloginapp.viewmodels.AlbumViewModel
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class AlbumFragment : Fragment() {
+class ArtistFragment : Fragment() {
     private var _binding: AlbumFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView

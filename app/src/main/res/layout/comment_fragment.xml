@@ -45,6 +45,6 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
         android:text="Agregar Comentario"
-        android:onClick="onAgregarComentario"/>
+        />
 
 </LinearLayout>

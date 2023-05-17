@@ -54,6 +54,8 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
         })
     }
 
+
+
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
     }

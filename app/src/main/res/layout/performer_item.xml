@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="album" type="com.example.testloginapp.data.model.Album"/>
+        <variable name="performer" type="com.example.testloginapp.data.model.Performer"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,14 +32,14 @@
                     android:layout_width="500dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:contentDescription="@string/album_name"/>
+                    android:contentDescription="@string/performer_name"/>
 
                 <TextView
                     android:id="@+id/textView6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@{album.name}"
+                    android:text="@{performer.name}"
                     android:gravity="center_vertical"/>
 
             </LinearLayout>

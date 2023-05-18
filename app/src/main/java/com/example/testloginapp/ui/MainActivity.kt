@@ -45,7 +45,7 @@ Log.d("act", navController.toString())
     }
 
     fun onArtistasClick(view: View) {
-        findNavController(R.id.nav_host_fragment).navigate(R.id.artistFragment)
+        findNavController(R.id.nav_host_fragment).navigate(R.id.performerFragment)
     }
 
     fun onColeccionistasClick(view: View) {

@@ -9,13 +9,9 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.testloginapp.data.model.*
 import org.json.JSONArray
 import org.json.JSONObject
-import com.example.testloginapp.data.model.Album
-import com.example.testloginapp.data.model.Tracks
-import com.example.testloginapp.data.model.Track
-import com.example.testloginapp.data.model.Collector
-import com.example.testloginapp.data.model.Comment
 
 class NetworkServiceAdapter constructor(context: Context) {
 
@@ -150,6 +146,40 @@ class NetworkServiceAdapter constructor(context: Context) {
                     description = resp.getString("description")
                 )
                 onComplete(album)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+
+    fun getMusicians(onComplete:(resp:List<Performer>)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("musicians",
+            Response.Listener<String> { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Performer>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Performer(performerId = item.getInt("id"),name = item.getString("name"), image = item.getString("image"), birthDate = item.getString("birthDate"),description = item.getString("description")))
+                }
+                onComplete(list)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+
+    fun getMusician(performerId:Int, onComplete:(resp:Performer)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("musicians/$performerId",
+            Response.Listener<String> { response ->
+                val resp = JSONObject(response)
+                val performer = Performer(
+                    performerId = resp.getInt("id"),
+                    name = resp.getString("name"),
+                    image = resp.getString("image"),
+                    birthDate = resp.getString("birthDate"),
+                    description = resp.getString("description")
+                )
+                onComplete(performer)
             },
             Response.ErrorListener {
                 onError(it)

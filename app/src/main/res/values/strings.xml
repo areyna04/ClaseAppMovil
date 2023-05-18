@@ -48,4 +48,9 @@
     <string name="txt_no_tracks">no hay tracks</string>
     <string name="duration">Duracion</string>
     <string name="name">Nombre</string>
+
+    <string name="performer_name">Nombre del músico</string>
+    <string name="title_performer">Artista</string>
+    <string name="crear_performer">Crear Artista</string>
+    <string name="birthdate">Fecha Nacimiento</string>
 </resources>

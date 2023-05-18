@@ -14,6 +14,24 @@
             app:destination="@id/albumFragment" />
     </fragment>
     <fragment
+        android:id="@+id/performerFragment"
+        android:name="com.example.testloginapp.ui.PerformerFragment"
+        android:label="Artistas"
+        tools:layout="@layout/performer_fragment">
+        <action
+            android:id="@+id/action_performerFragment_to_performerDetailFragment"
+            app:destination="@id/performerDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/performerDetailFragment"
+        android:name="com.example.testloginapp.ui.PerformerDetailFragment"
+        android:label="Artista"
+        tools:layout="@layout/performer_detail_fragment" >
+        <argument
+            android:name="performerId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
         android:id="@+id/albumFragment"
         android:name="com.example.testloginapp.ui.AlbumFragment"
         android:label="Albums"
@@ -24,18 +42,15 @@
         <action
             android:id="@+id/action_albumFragment_to_albumDetailFragment"
             app:destination="@id/albumDetailFragment" />
-        <action
-            android:id="@+id/action_albumFragment_to_artistFragment"
-            app:destination="@id/artistFragment" />
+
         <action
             android:id="@+id/action_albumFragment_to_collectorFragment"
             app:destination="@id/collectorFragment" />
+        <action
+            android:id="@+id/action_albumFragment_to_performerFragment"
+            app:destination="@id/performerFragment" />
+
     </fragment>
-    <fragment
-        android:id="@+id/artistFragment"
-        android:name="com.example.testloginapp.ui.AlbumFragment"
-        android:label="Albums"
-        tools:layout="@layout/artist_fragment" />
     <fragment
         android:id="@+id/commentFragment"
         android:name="com.example.testloginapp.ui.CommentFragment"
@@ -55,7 +70,7 @@
         android:id="@+id/albumDetailFragment"
         android:name="com.example.testloginapp.ui.AlbumDetailFragment"
         android:label="Detalle de Album"
-        tools:layout="@layout/comment_fragment" >
+        tools:layout="@layout/fragment_album_detail" >
         <argument
             android:name="albumId"
             app:argType="integer" />

@@ -25,7 +25,7 @@ import org.junit.runner.RunWith
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class CreateAlbumTest {
+class CrearAlbumTest {
 
     @Rule
     @JvmField

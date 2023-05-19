@@ -25,14 +25,14 @@ import org.junit.runner.RunWith
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class ConsultarDetalleAlbumTest {
+class ConsultarDetalleArtistaTest {
 
     @Rule
     @JvmField
     var mActivityScenarioRule = ActivityScenarioRule(LoginActivity::class.java)
 
     @Test
-    fun consultarDetalleAlbumTest() {
+    fun artistDetailTest() {
         val materialButton = onView(
             allOf(
                 withId(R.id.BtnUsuario), withText("Usuario"),
@@ -51,9 +51,27 @@ class ConsultarDetalleAlbumTest {
         )
         materialButton.perform(click())
 
+        val materialButton2 = onView(
+            allOf(
+                withId(R.id.button3), withText("Artistas"),
+                childAtPosition(
+                    allOf(
+                        withId(R.id.menu_container),
+                        childAtPosition(
+                            withClassName(`is`("androidx.constraintlayout.widget.ConstraintLayout")),
+                            2
+                        )
+                    ),
+                    1
+                ),
+                isDisplayed()
+            )
+        )
+        materialButton2.perform(click())
+
         val recyclerView = onView(
             allOf(
-                withId(R.id.albumsRv),
+                withId(R.id.performersRv),
                 childAtPosition(
                     withClassName(`is`("android.widget.FrameLayout")),
                     2
@@ -62,46 +80,14 @@ class ConsultarDetalleAlbumTest {
         )
         recyclerView.perform(actionOnItemAtPosition<ViewHolder>(0, click()))
 
-        val textView = onView(
-            allOf(
-                withText("Detalle de Album"),
-                withParent(
-                    allOf(
-                        withId(R.id.my_toolbar),
-                        withParent(IsInstanceOf.instanceOf(android.view.ViewGroup::class.java))
-                    )
-                ),
-                isDisplayed()
-            )
-        )
-        textView.check(matches(withText("Detalle de Album")))
-
-        val textView2 = onView(
-            allOf(
-                withText("Nombre del album"),
-                withParent(withParent(IsInstanceOf.instanceOf(android.widget.ScrollView::class.java))),
-                isDisplayed()
-            )
-        )
-        textView2.check(matches(withText("Nombre del album")))
-
         val textView3 = onView(
             allOf(
-                withText("Genero"),
+                withText("Fecha Nacimiento"),
                 withParent(withParent(IsInstanceOf.instanceOf(android.widget.ScrollView::class.java))),
                 isDisplayed()
             )
         )
-        textView3.check(matches(withText("Genero")))
-
-        val textView4 = onView(
-            allOf(
-                withText("Fecha de lanzamiento"),
-                withParent(withParent(IsInstanceOf.instanceOf(android.widget.ScrollView::class.java))),
-                isDisplayed()
-            )
-        )
-        textView4.check(matches(withText("Fecha de lanzamiento")))
+        textView3.check(matches(withText("Fecha Nacimiento")))
     }
 
     private fun childAtPosition(

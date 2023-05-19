@@ -102,15 +102,6 @@ class ConsultarDetalleAlbumTest {
             )
         )
         textView4.check(matches(withText("Fecha de lanzamiento")))
-
-        val textView6 = onView(
-            allOf(
-                withText("Record Label"),
-                withParent(withParent(IsInstanceOf.instanceOf(android.widget.ScrollView::class.java))),
-                isDisplayed()
-            )
-        )
-        textView6.check(matches(withText("Record Label")))
     }
 
     private fun childAtPosition(

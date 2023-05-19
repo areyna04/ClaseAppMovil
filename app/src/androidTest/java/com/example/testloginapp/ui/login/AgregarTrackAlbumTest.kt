@@ -1,20 +1,13 @@
 package com.example.testloginapp.ui.login
 
 
-import androidx.test.espresso.DataInteraction
-import androidx.test.espresso.ViewInteraction
 import androidx.test.filters.LargeTest
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewParent
 
-import androidx.test.InstrumentationRegistry.getInstrumentation
-import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.Espresso.pressBack
-import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import androidx.test.espresso.action.ViewActions.*
@@ -32,12 +25,11 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import org.hamcrest.Matchers.allOf
-import org.hamcrest.Matchers.anything
 import org.hamcrest.Matchers.`is`
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class addTrackAlbumTest {
+class AgregarTrackAlbumTest {
 
     @Rule
     @JvmField

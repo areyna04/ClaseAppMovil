@@ -1,20 +1,13 @@
 package com.example.testloginapp.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.testloginapp.R
 import com.example.testloginapp.databinding.ActivityMainBinding
 
@@ -45,5 +38,17 @@ Log.d("act", navController.toString())
 
     fun onMyButtonClick(view: View) {
         findNavController(view.id).navigate(R.id.addalbumFragment)
+    }
+
+    fun onAlbumesClick(view: View) {
+        findNavController(R.id.nav_host_fragment).navigate(R.id.albumFragment)
+    }
+
+    fun onArtistasClick(view: View) {
+        findNavController(R.id.nav_host_fragment).navigate(R.id.performerFragment)
+    }
+
+    fun onColeccionistasClick(view: View) {
+        findNavController(R.id.nav_host_fragment).navigate(R.id.collectorFragment)
     }
 }

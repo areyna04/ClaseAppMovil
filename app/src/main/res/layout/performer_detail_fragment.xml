@@ -2,7 +2,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.testloginapp.viewmodels.AlbumDetailViewModel" />
+            type="com.example.testloginapp.viewmodels.PerformerDetailViewModel" />
     </data>
 
     <FrameLayout
@@ -24,12 +24,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:contentDescription="@string/album_name" />
+                    android:contentDescription="@string/performer_name" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/album_name"
+                    android:text="@string/performer_name"
                     android:textStyle="bold"
                     android:paddingTop="16dp"/>
 
@@ -37,29 +37,7 @@
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.album.name}" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/genre"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewModel.album.genre}" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/releaseDate"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewModel.album.releaseDate}" />
+                    android:text="@{viewModel.performer.name}" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -70,37 +48,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.album.description}" />
+                    android:text="@{viewModel.performer.description}" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/recordLabel"
+                    android:text="@string/birthdate"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.album.recordLabel}" />
-
+                    android:text="@{viewModel.performer.birthDate}" />
             </LinearLayout>
         </ScrollView>
-        <Button
-            android:id="@+id/botonAgregarTrack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|start"
-            android:layout_margin="16dp"
-            android:text="Agregar track"
-            android:onClick="onAgregarTrackButtonClick"
-            />
-        <Button
-            android:id="@+id/botonCometarios"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_margin="16dp"
-            android:text="Comentarios"
-            />
     </FrameLayout>
 </layout>

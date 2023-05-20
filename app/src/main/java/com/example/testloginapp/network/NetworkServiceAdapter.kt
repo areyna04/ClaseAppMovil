@@ -12,6 +12,9 @@ import com.android.volley.toolbox.Volley
 import com.example.testloginapp.data.model.*
 import org.json.JSONArray
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class NetworkServiceAdapter constructor(context: Context) {
 
@@ -172,11 +175,14 @@ class NetworkServiceAdapter constructor(context: Context) {
         requestQueue.add(getRequest("musicians/$performerId",
             Response.Listener<String> { response ->
                 val resp = JSONObject(response)
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+                val birthDate = resp.getString("birthDate")
+                val parsedDate = dateFormat.parse(birthDate)
                 val performer = Performer(
                     performerId = resp.getInt("id"),
                     name = resp.getString("name"),
                     image = resp.getString("image"),
-                    birthDate = resp.getString("birthDate"),
+                    birthDate = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(parsedDate),
                     description = resp.getString("description")
                 )
                 onComplete(performer)

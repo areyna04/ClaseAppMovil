@@ -14,6 +14,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
+import java.net.URLDecoder
 
 
 class NetworkServiceAdapter constructor(context: Context) {
@@ -139,14 +140,17 @@ class NetworkServiceAdapter constructor(context: Context) {
         requestQueue.add(getRequest("albums/$albumId",
             Response.Listener<String> { response ->
                 val resp = JSONObject(response)
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+                val releaseDate = resp.getString("releaseDate")
+                val parsedDate = dateFormat.parse(releaseDate)
                 val album = Album(
                     albumId = resp.getInt("id"),
                     name = resp.getString("name"),
                     cover = resp.getString("cover"),
                     recordLabel = resp.getString("recordLabel"),
-                    releaseDate = resp.getString("releaseDate"),
+                    releaseDate = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(parsedDate),
                     genre = resp.getString("genre"),
-                    description = resp.getString("description")
+                    description = URLDecoder.decode(resp.getString("description"), "UTF-8")
                 )
                 onComplete(album)
             },

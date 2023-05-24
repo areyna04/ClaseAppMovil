@@ -523,7 +523,7 @@ class CollecionistaE2ETest {
                 )
             )
         )
-        recyclerView3.perform(actionOnItemAtPosition<ViewHolder>(2, click()))
+        recyclerView3.perform(actionOnItemAtPosition<ViewHolder>(1, click()))
 
         val materialButton8 = onView(
             allOf(

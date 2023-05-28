@@ -9,13 +9,13 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.testloginapp.data.model.*
 import org.json.JSONArray
 import org.json.JSONObject
-import com.example.testloginapp.data.model.Album
-import com.example.testloginapp.data.model.Tracks
-import com.example.testloginapp.data.model.Track
-import com.example.testloginapp.data.model.Collector
-import com.example.testloginapp.data.model.Comment
+import java.text.SimpleDateFormat
+import java.util.*
+import java.net.URLDecoder
+
 
 class NetworkServiceAdapter constructor(context: Context) {
 
@@ -140,16 +140,56 @@ class NetworkServiceAdapter constructor(context: Context) {
         requestQueue.add(getRequest("albums/$albumId",
             Response.Listener<String> { response ->
                 val resp = JSONObject(response)
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+                val releaseDate = resp.getString("releaseDate")
+                val parsedDate = dateFormat.parse(releaseDate)
                 val album = Album(
                     albumId = resp.getInt("id"),
                     name = resp.getString("name"),
                     cover = resp.getString("cover"),
                     recordLabel = resp.getString("recordLabel"),
-                    releaseDate = resp.getString("releaseDate"),
+                    releaseDate = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(parsedDate),
                     genre = resp.getString("genre"),
-                    description = resp.getString("description")
+                    description = URLDecoder.decode(resp.getString("description"), "UTF-8")
                 )
                 onComplete(album)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+
+    fun getMusicians(onComplete:(resp:List<Performer>)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("musicians",
+            Response.Listener<String> { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Performer>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Performer(performerId = item.getInt("id"),name = item.getString("name"), image = item.getString("image"), birthDate = item.getString("birthDate"),description = item.getString("description")))
+                }
+                onComplete(list)
+            },
+            Response.ErrorListener {
+                onError(it)
+            }))
+    }
+
+    fun getMusician(performerId:Int, onComplete:(resp:Performer)->Unit, onError: (error:VolleyError)->Unit){
+        requestQueue.add(getRequest("musicians/$performerId",
+            Response.Listener<String> { response ->
+                val resp = JSONObject(response)
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+                val birthDate = resp.getString("birthDate")
+                val parsedDate = dateFormat.parse(birthDate)
+                val performer = Performer(
+                    performerId = resp.getInt("id"),
+                    name = resp.getString("name"),
+                    image = resp.getString("image"),
+                    birthDate = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(parsedDate),
+                    description = resp.getString("description")
+                )
+                onComplete(performer)
             },
             Response.ErrorListener {
                 onError(it)

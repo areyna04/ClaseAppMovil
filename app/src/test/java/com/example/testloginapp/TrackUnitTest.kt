@@ -15,7 +15,7 @@ class TrackUnitTest {
     @Test
     fun test_getTrack() {
         val request = Request.Builder()
-            .url("$apiUrl/albums/4/tracks")
+            .url("$apiUrl/albums/1/tracks")
             .build()
         val response: Response = client.newCall(request).execute()
         assertEquals(200, response.code())
@@ -28,7 +28,7 @@ class TrackUnitTest {
                 "    \"duration\": \"5:05\"\n" +
                 "}")
         val request = Request.Builder()
-            .url("$apiUrl/albums/4/tracks")
+            .url("$apiUrl/albums/1/tracks")
             .post(requestBody)
             .build()
         val response: Response = client.newCall(request).execute()
@@ -37,7 +37,7 @@ class TrackUnitTest {
         assertEquals(200, response.code())
         println(idTrack)
         val request2 = Request.Builder()
-            .url("$apiUrl/albums/4/tracks/$idTrack")
+            .url("$apiUrl/albums/1/tracks/$idTrack")
             .delete()
             .build()
         val response2: Response = client.newCall(request2).execute()

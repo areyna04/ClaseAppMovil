@@ -26,7 +26,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/performersRv"
-        android:layout_width="351dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/performer_item" />
 

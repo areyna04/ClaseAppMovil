@@ -7,36 +7,42 @@
         android:id="@+id/nameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="50dp"
         android:hint="@string/nameAlbum" />
 
     <EditText
         android:id="@+id/coverEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="50dp"
         android:hint="@string/cover" />
 
     <EditText
         android:id="@+id/releaseDateEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="50dp"
         android:hint="@string/releaseDate" />
 
     <EditText
         android:id="@+id/descriptionEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="50dp"
         android:hint="@string/description" />
 
     <EditText
         android:id="@+id/genreEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="50dp"
         android:hint="@string/genre" />
 
     <EditText
         android:id="@+id/recordLabelEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="50dp"
         android:hint="@string/recordLabel" />
 
     <Button

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "703519656173",
+    "project_id": "vinilos-f0c8c",
+    "storage_bucket": "vinilos-f0c8c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703519656173:android:729b426300d203f1b0e4e4",
+        "android_client_info": {
+          "package_name": "com.example.testloginapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703519656173-83988mltbc5v90cqdid55c6m33thkr45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMmLSdsQAdqh2B16XWO-s_fhV0KxzZC-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703519656173-83988mltbc5v90cqdid55c6m33thkr45.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

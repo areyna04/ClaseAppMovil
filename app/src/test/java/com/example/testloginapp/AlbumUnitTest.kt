@@ -23,7 +23,7 @@ class AlbumUnitTest {
     @Test
     fun test_getAlbum() {
         val request = Request.Builder()
-            .url("$apiUrl/albums/4")
+            .url("$apiUrl/albums/1")
             .build()
         val response: Response = client.newCall(request).execute()
         assertEquals(200, response.code())

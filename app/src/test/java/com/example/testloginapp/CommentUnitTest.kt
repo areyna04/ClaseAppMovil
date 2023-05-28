@@ -15,7 +15,7 @@ class CommentUnitTest {
     @Test
     fun test_getComments() {
         val request = Request.Builder()
-            .url("$apiUrl/albums/4/comments")
+            .url("$apiUrl/albums/1/comments")
             .build()
         val response: Response = client.newCall(request).execute()
         assertEquals(200, response.code())
@@ -25,7 +25,7 @@ class CommentUnitTest {
         val requestBody = RequestBody.create(MediaType.parse("application/json"),
             "{\"description\":\"Muy buen album\",\"rating\":\"4\",\"collector\":{\"id\":1}}")
         val request = Request.Builder()
-            .url("$apiUrl/albums/4/comments/")
+            .url("$apiUrl/albums/1/comments/")
             .post(requestBody)
             .build()
         val response: Response = client.newCall(request).execute()
@@ -33,7 +33,7 @@ class CommentUnitTest {
         idComment = extractValueFromResponse(responseBody)
         assertEquals(200, response.code())
         val request2 = Request.Builder()
-            .url("$apiUrl/albums/4/comments/$idComment")
+            .url("$apiUrl/albums/1/comments/$idComment")
             .delete()
             .build()
         val response2: Response = client.newCall(request2).execute()
